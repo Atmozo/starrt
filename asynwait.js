@@ -22,7 +22,7 @@ async function fetchDataFromAPI(url) {
   }
 }
 
-// Read a file using async/await
+// Reading a file using async/await
 async function readFile() {
   try {
     const data = await fs.readFile('example.txt', 'utf8');
@@ -32,7 +32,7 @@ async function readFile() {
   }
 }
 
-// Fetch multiple API endpoints in parallel
+// Fetchn' multiple API endpoints in parallel
 async function fetchMultipleDataInParallel() {
   try {
     const [data1, data2] = await Promise.all([
@@ -47,14 +47,14 @@ async function fetchMultipleDataInParallel() {
   }
 }
 
-// Use delay to simulate async operation with a timeout
+// delay to simulate async operation with a timeout
 async function performTaskWithDelay() {
   console.log('Task started');
-  await delay(2000); // Wait for 2 seconds
+  await delay(2000); // Wait  2 sec
   console.log('Task completed after delay');
 }
 
-// Main function to combine everything
+
 async function main() {
   // Perform all async tasks
   await performTaskWithDelay();
