@@ -1,0 +1,171 @@
+# Debugging in Node.js
+
+Debugging is a critical skill for identifying and fixing issues in Node.js applications. Below are the common methods and tools to debug effectively:
+
+---
+
+## 1. **Using the Built-in Debugger**
+
+### Run Your Script in Debug Mode
+
+Node.js has a built-in debugger. To start debugging, use the `inspect` flag:
+
+```bash
+node inspect .js
+```
+
+### Common Commands in Debug Mode:
+
+- `n`: Step to the next line of code.
+- `c`: Continue execution until the next breakpoint or end of the script.
+- `sb('filename.js', lineNumber)`: Set a breakpoint at a specific line in the file.
+- `repl`: Enter an interactive environment to evaluate variables and expressions.
+
+---
+
+## 2. **Using Chrome DevTools**
+
+### Steps:
+
+1. Start your script with the `--inspect` flag:
+
+   ```bash
+   node --inspect yourScript.js
+   ```
+
+   This will output a URL like:
+
+   ```
+   Debugger listening on ws://127.0.0.1:9229/abcd1234...
+   ```
+
+2. Open **Google Chrome** and navigate to `chrome://inspect`.
+
+3. Click on **Configure** and add `localhost:9229`.
+
+4. Click **Inspect** next to your script to start debugging in Chrome DevTools.
+
+   Use features like:
+
+   - Breakpoints
+   - Watch variables
+   - Step through code (`Step Over`, `Step Into`, `Step Out`)
+
+---
+
+## 3. **Using VS Code Debugger**
+
+### Steps:
+
+1. Open your project in **Visual Studio Code**.
+
+2. Set up a debugging configuration:
+
+   - Go to the **Run and Debug** section (Ctrl+Shift+D).
+   - Click **create a launch.json file**.
+   - Select **Node.js**.
+
+   Your `launch.json` might look like this:
+
+   ```json
+   {
+     "version": "0.2.0",
+     "configurations": [
+       {
+         "type": "node",
+         "request": "launch",
+         "name": "Launch Program",
+         "skipFiles": ["<node_internals>/**"],
+         "program": "${workspaceFolder}/yourScript.js"
+       }
+     ]
+   }
+   ```
+
+3. Set breakpoints by clicking on the left margin of the editor.
+
+4. Click the green **Run** button to start debugging.
+
+---
+
+## 4. \*\*Debugging with \*\***`console.log()`**
+
+Although not a debugging tool per se, `console.log()` is often used to check the values of variables or execution flow.
+
+Example:
+
+```javascript
+const add = (a, b) => {
+  console.log(`Adding ${a} and ${b}`);
+  return a + b;
+};
+```
+
+---
+
+## 5. **Using Third-party Tools**
+
+### a. **Node.js Debugger Tools**
+
+- **`node-inspect`**: A CLI debugging tool.
+- Install it globally:
+  ```bash
+  npm install -g node-inspect
+  ```
+  Run:
+  ```bash
+  node-inspect yourScript.js
+  ```
+
+### b. \*\*Libraries like \*\***`debug`**
+
+Add debugging output to your app without cluttering logs in production.
+
+Install:
+
+```bash
+npm install debug
+```
+
+Example:
+
+```javascript
+const debug = require('debug')('app');
+
+debug('This is a debug message');
+```
+
+Run with debugging enabled:
+
+```bash
+DEBUG=app node yourScript.js
+```
+
+---
+
+## 6. **Node.js Error Stack Tracing**
+
+Errors in Node.js come with stack traces. Use `try...catch` blocks to handle errors effectively.
+
+Example:
+
+```javascript
+try {
+  throw new Error("Something went wrong!");
+} catch (err) {
+  console.error(err.stack);
+}
+```
+
+---
+
+## 7. **Best Practices for Debugging**
+
+- Use meaningful variable names for easier debugging.
+- Write modular and testable code.
+- Use linting tools like **ESLint** to catch errors before running your code.
+
+---
+
+### Let me know if you need further clarification or examples
+
