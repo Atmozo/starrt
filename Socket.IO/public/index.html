@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Socket.IO Chat</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e5ddd5;
+    }
+    #chat-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      height: 80vh;
+    }
+    #messages {
+      list-style-type: none;
+      padding: 0;
+      flex-grow: 1;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }
+    #messages li {
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      max-width: 80%;
+    }
+    #messages .sent {
+      background-color: #dcf8c6;
+      align-self: flex-end;
+    }
+    #messages .received {
+      background-color: #ffffff;
+      align-self: flex-start;
+      border: 1px solid #ddd;
+    }
+    #message-form {
+      display: flex;
+    }
+    #message-input {
+      flex-grow: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+    #send-button {
+      padding: 10px 20px;
+      background-color: #25d366;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #send-button:hover {
+      background-color: #128c7e;
+    }
+  </style>
+</head>
+<body>
+  <div id="chat-container">
+    <h2>Socket.IO Chat</h2>
+    <ul id="messages"></ul>
+    <form id="message-form">
+      <input id="message-input" autocomplete="off" placeholder="Type your message..." />
+      <button id="send-button">Send</button>
+    </form>
+  </div>
+  <script>
+    const socket = io();
+
+    // Handle form submission
+    const form = document.getElementById('message-form');
+    const messageInput = document.getElementById('message-input');
+    const messages = document.getElementById('messages');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const message = messageInput.value;
+      if (message.trim()) {
+        socket.emit('chat message', message); // Send message to server
+        addMessage(message, 'sent'); // Add sent message to UI
+        messageInput.value = '';
+      }
+    });
+
+    // Display incoming messages
+    socket.on('chat message', (msg) => {
+      addMessage(msg, 'received'); // Add received message to UI
+    });
+
+    // Function to add message to UI
+    function addMessage(msg, type) {
+      const li = document.createElement('li');
+      li.textContent = msg;
+      li.classList.add(type);
+      messages.appendChild(li);
+      messages.scrollTop = messages.scrollHeight; // Scroll to the latest message
+    }
+  </script>
+</body>
+</html>
