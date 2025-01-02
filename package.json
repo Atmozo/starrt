@@ -12,6 +12,7 @@
   "description": "NODES.JS NOTES  100DAYSOFCODE",
   "dependencies": {
     "@redis/client": "^1.6.0",
+    "apollo-server-express": "^3.13.0",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
     "connect-redis": "^8.0.1",
@@ -23,6 +24,7 @@
     "express-session": "^1.18.1",
     "express-validator": "^7.2.1",
     "googleapis": "^144.0.0",
+    "graphql": "^16.10.0",
     "ioredis": "^5.4.2",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.11.0",
