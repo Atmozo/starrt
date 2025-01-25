@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "NODES.JS NOTES  100DAYSOFCODE",
   "dependencies": {
+    "@azure/functions": "^4.6.0",
     "@graphql-tools/schema": "^10.0.16",
     "@redis/client": "^1.6.0",
     "apollo-server": "^3.13.0",
