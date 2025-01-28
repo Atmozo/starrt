@@ -1,0 +1,16 @@
+config:
+  target: "ws://localhost:3000" 
+  phases:
+    - duration: 60    # Test duration in seconds
+      arrivalRate: 10 # New connections per second
+  payload:
+    - "Hello from client!" # Example payload
+
+scenarios:
+  - engine: "ws"
+    flow:
+      - send:
+          text: "Hello WebSocket Server!" # Send a message to the server
+      - think: 1                          # Wait for 1 second
+      - send:
+          text: "Another message!"
