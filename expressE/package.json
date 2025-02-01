@@ -1,0 +1,14 @@
+{
+  "name": "ecommerce-api",
+  "version": "1.0.0",
+  "description": "Simple e-commerce API for k6 testing demo",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "k6 run test.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  }
+}

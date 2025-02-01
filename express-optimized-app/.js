@@ -9,6 +9,7 @@ require("dotenv").config();
 const app = express();
 
 // Middleware
+app.use(compression()); // Enable GZIP compression
 app.use(helmet()); // Secure HTTP headers
 app.use(morgan("combined")); // Logging
 
