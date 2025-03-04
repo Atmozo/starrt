@@ -1,0 +1,18 @@
+{
+  "name": "codegen",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "codegen": "graphql-codegen --config codegen.ts"
+  },
+  "devDependencies": {
+    "@graphql-codegen/typescript": "4.1.5",
+    "@graphql-codegen/introspection": "4.0.3",
+    "@graphql-codegen/cli": "5.0.5"
+  }
+}
