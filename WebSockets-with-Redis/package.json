@@ -1,0 +1,17 @@
+{
+  "name": "websocket-redis-demo",
+  "version": "1.0.0",
+  "description": "WebSockets with Redis for scalable real-time applications",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server1": "SERVER_INSTANCE=server1 PORT=3001 node server.js",
+    "server2": "SERVER_INSTANCE=server2 PORT=3002 node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2",
+    "@socket.io/redis-adapter": "^8.2.1",
+    "redis": "^4.6.10"
+  }
+}
