@@ -1,0 +1,20 @@
+{
+  "name": "graphql-schema-stitching",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@graphql-tools/schema": "^10.0.23",
+    "@graphql-tools/stitch": "^9.4.22",
+   "overrides": {
+   "graphql": "^16.6.0"
+}
+  }
+}
